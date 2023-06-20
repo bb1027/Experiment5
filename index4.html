@@ -1,0 +1,135 @@
+<html>
+<head>
+<script type="text/javascript">
+function startTime()
+{
+var today=new Date()
+    var y=today.getFullYear()
+    var mon=today.getMonth()+1
+    var d=today.getDate()
+    var hour=today.getHours()
+    var min=today.getMinutes()
+    var sec=today.getSeconds()
+    var weeks = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+    var w= weeks[today.getDay()]
+    min=checkTime(min)
+    sec=checkTime(sec)
+    document.getElementById('txt').innerHTML=y+" 年 "+mon+" 月 "+d+" 日  "+w+" "+hour+":"+min+":"+sec
+    t=setTimeout('startTime()',500)
+}
+ 
+function checkTime(i)
+{
+    if (i<10)
+    {i="0" + i}
+    return i
+}
+</script>
+</head>
+<body onload="startTime()">
+<div id="txt"></div>
+</body>
+</html>
+ 
+<body>
+    <div>距离放假还有</div>
+    <div id="box"></div>
+    <script type="text/javascript">
+        // 获取元素
+        var box = document.getElementById("box");
+        // 调用函数
+        timemove();
+       
+        // 定义函数
+        function timemove() {
+            // 获取当前时间
+            var d1 = new Date();
+            // 定义目标时间
+            var d2 = new Date("2023/7/11 12:00:00");
+            // 定义剩余时间
+            var d = d2 - d1;
+           
+            // 计算剩余天数
+            var toDay = parseInt(d / 1000 / 60 / 60 / 24);
+            // 计算剩余小时
+            var toHours = parseInt(d / 1000 / 60 / 60 % 24);
+            // 计算剩余分钟
+            var toMinutes = parseInt(d / 1000 / 60 % 60);
+            // 计算剩余秒
+            var toSeconds = parseInt(d / 1000 % 60);
+           
+            //拼接变量
+            var time = toDay + "天" + toHours + "小时" + toMinutes + "分钟" + toSeconds + "秒";
+           
+            // 将拼接好的变量显示在页面
+            box.innerHTML = time;
+            // 调用定时器,每秒刷新
+            var timer = setInterval(timemove, 1000);
+            // 当剩余时间小于等于0时,停止定时器,并输出计时结束
+            if (d <= 0) {
+                window.clearInterval(timer);
+                box.innerHTML = "计时结束";
+            }
+        }
+    </script>
+</body>
+ 
+<!DOCTYPE html>
+<html>
+<body>
+ 
+<h1>JavaScript 数组排序</h1>
+ 
+<p>sort() 方法按字母顺序对数组进行排序。</p >
+ 
+<button onclick="myFunction()">试一试</button>
+ 
+<p id="demo"></p >
+ 
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+ 
+function myFunction() {
+  fruits.sort();
+  document.getElementById("demo").innerHTML = fruits;
+}
+</script>
+ 
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+    <script>
+        // 1. 构造函数的问题
+        function Star(uname, age) {
+            this.uname = uname;
+            this.age = age;
+            // this.sing = function() {
+            //     console.log('我会唱歌');
+            // }
+        }
+        Star.prototype.sing = function() {
+            console.log('我会唱歌');
+        }
+        var zs = new Star('张三', 18);
+        var ls = new Star('李四', 19);
+        console.log(zs.sing === ls.sing); // true
+ 
+        zs.sing();
+        ls.sing();
+    </script>
+ 
+</body>
+ 
+</html>
